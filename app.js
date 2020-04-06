@@ -1,13 +1,17 @@
 let appId = `09254cf01cbda27bc76c59c133a8e965`;
 let units = `imperial`;
-let searchMethood = 'zip';
+let searchMethood ;
 
 function getSearchMethood(searchTerm) {
-    if(searchTerm.length === 5)
+    if(searchTerm.length === 5 && Number.parseInt(searchTerm) + '' === searchTerm)
+        searchMethood = 'zip';
+    else    
+        searchMethood = 'q';
 }
 
 
 function searchWeather(searchTerm) {
+    getSearchMethood(searchTerm);
     fetch(`http://api.openweathermap.org/data/2.5/weather?${searchMethood}=${searchTerm}&APPID=${appId}&units=${units}`).then(result => {
         return result.json();
     }).then(result => {
@@ -16,6 +20,7 @@ function searchWeather(searchTerm) {
 }
 function init(resultFromServer) {
     console.log(resultFromServer);
+    
 }
 
 document.getElementById('searchBtn').addEventListener('click',() => {
