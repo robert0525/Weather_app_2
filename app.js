@@ -60,6 +60,8 @@ function init(resultFromServer) {
    let resultDescription = resultFromServer.weather[0].description;
    weatherDescriptionHeader.innerText = resultDescription.charAt(0).toUpperCase() + resultDescription.slice(1);
 
+   temperatureElement.innerHTML = Math.floor(resultFromServer.main.temp) + '&#176' ;
+
 }
 
 document.getElementById('searchBtn').addEventListener('click',() => {
