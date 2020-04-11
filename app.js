@@ -57,6 +57,9 @@ function init(resultFromServer) {
 
     weatherIcon.src = ' http://openweathermap.org/img/wn/' + resultFromServer.weather[0].icon + '.png';
 
+   let resultDescription = resultFromServer.weather[0].description;
+   weatherDescriptionHeader.innerText = resultDescription;
+
 }
 
 document.getElementById('searchBtn').addEventListener('click',() => {
